@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISP Layanan Pulsa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Layanan ISP Sederhana</h1>
+
+        <!-- Step 1: Input kode transfer *858# -->
+        <div id="step1" class="step">
+            <label for="transferCode">Kode Transfer:</label>
+            <input type="text" id="transferCode" placeholder="Masukkan *858#" required>
+            <button onclick="validateTransferCode()">Kirim</button>
+            <button onclick="cancel()">Batal</button>
+        </div>
+
+        <!-- Step 2: Input angka untuk memilih layanan -->
+        <div id="step2" class="step" style="display: none;">
+            <label for="serviceOption">Pilih Layanan:</label>
+            <ol>
+                <li>Transfer Pulsa</li>
+                <li>Cek Saldo</li>
+                <li>Beli Paket Data</li>
+            </ol>
+            <input type="number" id="serviceOption" min="1" max="3" placeholder="Masukkan angka" required>
+            <div class="button-container">
+                <button onclick="nextService()">Kirim</button>
+                <button onclick="cancel()">Batal</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Input nomor tujuan untuk transfer pulsa -->
+        <div id="step3" class="step" style="display: none;">
+            <label for="destinationNumber">Nomor Tujuan:</label>
+            <input type="text" id="destinationNumber" placeholder="Masukkan Nomor Tujuan" required>
+            <div class="button-container">
+                <button onclick="nextStep('step3', 'step4')">Kirim</button>
+                <button onclick="cancel()">Batal</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Input jumlah transfer pulsa -->
+        <div id="step4" class="step" style="display: none;">
+            <label for="transferAmount">Jumlah Transfer (Rp):</label>
+            <input type="number" id="transferAmount" placeholder="Masukkan Jumlah Transfer" required>
+            <div class="button-container">
+                <button onclick="processTransfer()">Kirim</button>
+                <button onclick="cancel()">Batal</button>
+            </div>
+        </div>
+
+        <!-- Hasil -->
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
